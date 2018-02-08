@@ -1,0 +1,218 @@
+﻿@model ASOLHEPA_2.Asociado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Asociado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carnet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carnet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirección)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dirección)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teléfono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teléfono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Télefono2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Télefono2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorreoElectrónico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorreoElectrónico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesión)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesión)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acudiente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acudiente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatalogaMenor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatalogaMenor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LugarNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LugarNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInscripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInscripción)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patología)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patología)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoPatología)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoPatología)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRetiro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRetiro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntidadesSalud.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntidadesSalud.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Especialista.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especialista.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoAsociado.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoAsociado.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstitucionesSalud.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstitucionesSalud.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegimenesSalud.Descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegimenesSalud.Descripción)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASOLHEPAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Asociado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Carnet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Dirección" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Télefono2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CorreoElectrónico" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Profesión" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Acudiente" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CatalogaMenor" Type="Boolean" />
+    <Property Name="Identificación" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstadoAsociado" Type="Int16" />
+    <Property Name="LugarNacimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+    <Property Name="FechaInscripción" Type="DateTime" Precision="0" />
+    <Property Name="IdEntidadSalud" Type="Int32" />
+    <Property Name="IdInstitucion" Type="Int32" />
+    <Property Name="Patología" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TipoPatología" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdEspecialista" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EntidadesSalud" Relationship="Self.FK_Asociados_EntidadesSalud" FromRole="Asociados" ToRole="EntidadesSalud" />
+    <NavigationProperty Name="Especialista" Relationship="Self.FK_Asociados_Especialistas" FromRole="Asociados" ToRole="Especialistas" />
+    <NavigationProperty Name="EstadoAsociado" Relationship="Self.FK_Asociados_EstadoAsociado" FromRole="Asociados" ToRole="EstadoAsociado" />
+    <NavigationProperty Name="InstitucionesSalud" Relationship="Self.FK_Asociados_InstitucionesSalud" FromRole="Asociados" ToRole="InstitucionesSalud" />
+    <NavigationProperty Name="Autorizaciones" Relationship="Self.FK_Autorizaciones_Asociados" FromRole="Asociados" ToRole="Autorizaciones" />
+    <NavigationProperty Name="Donaciones" Relationship="Self.FK_Donaciones_Asociados" FromRole="Asociados" ToRole="Donaciones" />
+    <NavigationProperty Name="Valores" Relationship="Self.FK_Valores_Asociados" FromRole="Asociados" ToRole="Valores" />
+    <Property Name="FechaRetiro" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Autorizacione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEntidad" Type="Int32" />
+    <Property Name="IdInstitución" Type="Int32" />
+    <Property Name="IdProcedimiento" Type="Int32" />
+    <Property Name="IdAsociado" Type="Int32" />
+    <Property Name="Valor" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="FechaAutorización" Type="DateTime" Precision="0" />
+    <Property Name="Autoriza" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociado" Relationship="Self.FK_Autorizaciones_Asociados" FromRole="Autorizaciones" ToRole="Asociados" />
+    <NavigationProperty Name="EntidadesSalud" Relationship="Self.FK_Autorizaciones_EntidadesSalud" FromRole="Autorizaciones" ToRole="EntidadesSalud" />
+    <NavigationProperty Name="InstitucionesSalud" Relationship="Self.FK_Autorizaciones_InstitucionesSalud" FromRole="Autorizaciones" ToRole="InstitucionesSalud" />
+    <NavigationProperty Name="Procedimiento" Relationship="Self.FK_Autorizaciones_Procedimientos" FromRole="Autorizaciones" ToRole="Procedimientos" />
+  </EntityType>
+  <EntityType Name="Donacione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAsociado" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Valor" Type="Int32" />
+    <Property Name="Obsevaciones" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociado" Relationship="Self.FK_Donaciones_Asociados" FromRole="Donaciones" ToRole="Asociados" />
+  </EntityType>
+  <EntityType Name="EntidadesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Identificación" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociados" Relationship="Self.FK_Asociados_EntidadesSalud" FromRole="EntidadesSalud" ToRole="Asociados" />
+    <NavigationProperty Name="Autorizaciones" Relationship="Self.FK_Autorizaciones_EntidadesSalud" FromRole="EntidadesSalud" ToRole="Autorizaciones" />
+  </EntityType>
+  <EntityType Name="Especialista">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Identificación" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Institución" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociados" Relationship="Self.FK_Asociados_Especialistas" FromRole="Especialistas" ToRole="Asociados" />
+  </EntityType>
+  <EntityType Name="EstadoAsociado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociados" Relationship="Self.FK_Asociados_EstadoAsociado" FromRole="EstadoAsociado" ToRole="Asociados" />
+  </EntityType>
+  <EntityType Name="InstitucionesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IdentificacionNIT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Dirección" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Teléfono2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociados" Relationship="Self.FK_Asociados_InstitucionesSalud" FromRole="InstitucionesSalud" ToRole="Asociados" />
+    <NavigationProperty Name="Autorizaciones" Relationship="Self.FK_Autorizaciones_InstitucionesSalud" FromRole="InstitucionesSalud" ToRole="Autorizaciones" />
+  </EntityType>
+  <EntityType Name="Procedimiento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descripción" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="IdAutorizacion" Type="Int32" />
+    <Property Name="ValorAproximado" Type="Int32" />
+    <Property Name="ValorReal" Type="Int32" />
+    <Property Name="ValorAsociación" Type="Int32" />
+    <NavigationProperty Name="Autorizaciones" Relationship="Self.FK_Autorizaciones_Procedimientos" FromRole="Procedimientos" ToRole="Autorizaciones" />
+  </EntityType>
+  <EntityType Name="Valore">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdAsociado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdAutorización" Type="Int32" />
+    <Property Name="IdDonación" Type="Int32" />
+    <Property Name="OtrosValores" Type="Int32" />
+    <Property Name="TotalCobro" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Asociado" Relationship="Self.FK_Valores_Asociados" FromRole="Valores" ToRole="Asociados" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Asociados_EntidadesSalud">
+    <End Role="EntidadesSalud" Type="Self.EntidadesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEntidadSalud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_Especialistas">
+    <End Role="Especialistas" Type="Self.Especialista" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialistas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEspecialista" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_EstadoAsociado">
+    <End Role="EstadoAsociado" Type="Self.EstadoAsociado" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoAsociado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEstadoAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdInstitucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_Asociados">
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donaciones_Asociados">
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="0..1" />
+    <End Role="Donaciones" Type="Self.Donacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donaciones">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valores_Asociados">
+    <End Role="Asociados" Type="Self.Asociado" Multiplicity="1" />
+    <End Role="Valores" Type="Self.Valore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Valores">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_EntidadesSalud">
+    <End Role="EntidadesSalud" Type="Self.EntidadesSalud" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdEntidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdInstitución" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_Procedimientos">
+    <End Role="Procedimientos" Type="Self.Procedimiento" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedimientos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdProcedimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ASOLHEPAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Asociados" EntityType="Self.Asociado" />
+    <EntitySet Name="Autorizaciones" EntityType="Self.Autorizacione" />
+    <EntitySet Name="Donaciones" EntityType="Self.Donacione" />
+    <EntitySet Name="EntidadesSaluds" EntityType="Self.EntidadesSalud" />
+    <EntitySet Name="Especialistas" EntityType="Self.Especialista" />
+    <EntitySet Name="EstadoAsociadoes" EntityType="Self.EstadoAsociado" />
+    <EntitySet Name="InstitucionesSaluds" EntityType="Self.InstitucionesSalud" />
+    <EntitySet Name="Procedimientos" EntityType="Self.Procedimiento" />
+    <EntitySet Name="Valores" EntityType="Self.Valore" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Asociados_EntidadesSalud" Association="Self.FK_Asociados_EntidadesSalud">
+      <End Role="EntidadesSalud" EntitySet="EntidadesSaluds" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_Especialistas" Association="Self.FK_Asociados_Especialistas">
+      <End Role="Especialistas" EntitySet="Especialistas" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_EstadoAsociado" Association="Self.FK_Asociados_EstadoAsociado">
+      <End Role="EstadoAsociado" EntitySet="EstadoAsociadoes" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_InstitucionesSalud" Association="Self.FK_Asociados_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSaluds" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_Asociados" Association="Self.FK_Autorizaciones_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donaciones_Asociados" Association="Self.FK_Donaciones_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Donaciones" EntitySet="Donaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valores_Asociados" Association="Self.FK_Valores_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Valores" EntitySet="Valores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_EntidadesSalud" Association="Self.FK_Autorizaciones_EntidadesSalud">
+      <End Role="EntidadesSalud" EntitySet="EntidadesSaluds" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_InstitucionesSalud" Association="Self.FK_Autorizaciones_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSaluds" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_Procedimientos" Association="Self.FK_Autorizaciones_Procedimientos">
+      <End Role="Procedimientos" EntitySet="Procedimientos" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

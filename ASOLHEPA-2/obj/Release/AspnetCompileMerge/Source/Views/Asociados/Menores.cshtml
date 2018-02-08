@@ -1,0 +1,171 @@
+﻿@model IEnumerable<ASOLHEPA_2.Asociado>
+
+<p>
+   LISTADO DE MENORES
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carnet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dirección)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teléfono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Télefono2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorreoElectrónico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profesión)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acudiente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatalogaMenor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificación)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LugarNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInscripción)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRetiro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patología)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoPatología)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntidadesSalud.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialista.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoAsociado.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitucionesSalud.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegimenesSalud.Descripción)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carnet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dirección)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teléfono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Télefono2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoElectrónico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profesión)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acudiente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatalogaMenor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificación)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LugarNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInscripción)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRetiro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patología)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoPatología)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntidadesSalud.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialista.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoAsociado.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstitucionesSalud.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegimenesSalud.Descripción)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc4d99e3eb774e8e95708bfac619fe50" Name="Diagram1">
+        <EntityTypeShape EntityType="ASOLHEPAModel.Asociado" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.Autorizacione" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.Donacione" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.EntidadesSalud" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.Especialista" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.EstadoAsociado" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.InstitucionesSalud" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.Procedimiento" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.RegimenesSalud" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.Valore" Width="1.5" PointX="7.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ASOLHEPAModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Asociados_EntidadesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Asociados_Especialistas" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Asociados_EstadoAsociado" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Asociados_InstitucionesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Asociados_RegimenesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Autorizaciones_Asociados" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Donaciones_Asociados" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Valores_Asociados" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Autorizaciones_EntidadesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Autorizaciones_InstitucionesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Autorizaciones_Procedimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Especialistas_InstitucionesSalud" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Especialistas_InstitucionesSalud1" ManuallyRouted="false" />
+        <AssociationConnector Association="ASOLHEPAModel.FK_Especialistas_InstitucionesSalud2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

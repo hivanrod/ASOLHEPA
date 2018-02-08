@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ASOLHEPA_2.Procedimiento>
+
+@{
+    ViewBag.Title = "Procedimiento";
+}
+
+<h2>Procedimiento</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdAutorizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorAproximado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorReal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorAsociación)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripción)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdAutorizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorAproximado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorReal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorAsociación)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

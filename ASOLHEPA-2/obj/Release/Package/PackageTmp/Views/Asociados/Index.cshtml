@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<ASOLHEPA_2.Asociado>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ASOCIADOS";
+}
+<h2>LISTA DE ASOCIADOS</h2>
+<p>
+    @Html.ActionLink("Crear Nuevo ASOCIADO +", "Create")
+</p>
+<p>
+    @Html.ActionLink("Lista de Menores", "Menores","Asociado", new { target = "_blank" })
+</p>
+
+<p>
+</p>
+
+
+@using (Html.BeginForm("Index", "Asociados", FormMethod.Get))
+{
+    var it = Model.TotalItemCount;
+    <p>
+        Buscar por Carnet, Cedula, Nombre, Estado Asociado y Observaciones: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+        _   Total registros : @it   _
+
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Carnet", "Index", new { sortOrder = ViewBag.CarnetSortParm, currentFilter = ViewBag.CurrentFilter })
+
+        </th>
+        <th>
+            @Html.ActionLink("Identificación", "Index", new { sortOrder = ViewBag.IdentificacionSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Nombres", "Index", new { sortOrder = ViewBag.NombresSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+            Celular
+        </th>
+        <th>
+            Patología
+        </th>
+        <th>
+            TipoPatología
+        </th>
+        <th>
+            @Html.ActionLink("EstadoAsociado", "Index", new { sortOrder = ViewBag.EstadoAsociadoSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Observaciones
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carnet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificación)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teléfono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patología)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPatología)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoAsociado.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
