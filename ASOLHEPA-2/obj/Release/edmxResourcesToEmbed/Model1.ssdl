@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ASOLHEPAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asociados">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="200" />
+    <Property Name="Carnet" Type="varchar" MaxLength="200" />
+    <Property Name="Dirección" Type="varchar" MaxLength="500" />
+    <Property Name="Ciudad" Type="varchar" MaxLength="200" />
+    <Property Name="Teléfono" Type="varchar" MaxLength="200" />
+    <Property Name="Télefono2" Type="varchar" MaxLength="200" />
+    <Property Name="Celular" Type="varchar" MaxLength="200" />
+    <Property Name="CorreoElectrónico" Type="varchar" MaxLength="200" />
+    <Property Name="Profesión" Type="varchar" MaxLength="200" />
+    <Property Name="Telefono3" Type="varchar" MaxLength="200" />
+    <Property Name="Acudiente" Type="varchar" MaxLength="200" />
+    <Property Name="CatalogaMenor" Type="bit" />
+    <Property Name="Identificación" Type="varchar" MaxLength="200" />
+    <Property Name="IdEstadoAsociado" Type="smallint" />
+    <Property Name="LugarNacimiento" Type="varchar" MaxLength="100" />
+    <Property Name="FechaNacimiento" Type="date" />
+    <Property Name="FechaInscripción" Type="date" />
+    <Property Name="FechaRetiro" Type="date" />
+    <Property Name="IdEntidadSalud" Type="int" />
+    <Property Name="IdRegimen" Type="int" />
+    <Property Name="IdInstitucion" Type="int" />
+    <Property Name="Patología" Type="varchar" MaxLength="200" />
+    <Property Name="TipoPatología" Type="varchar" MaxLength="200" />
+    <Property Name="IdEspecialista" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="Autorizaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEntidad" Type="int" />
+    <Property Name="IdInstitución" Type="int" />
+    <Property Name="IdProcedimiento" Type="int" />
+    <Property Name="IdAsociado" Type="int" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="FechaPrescripción" Type="date" />
+    <Property Name="FechaAutorización" Type="date" />
+    <Property Name="FechaDisfruteDerecho" Type="date" />
+    <Property Name="Autoriza" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Donaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAsociado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="Obsevaciones" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="EntidadesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="500" />
+    <Property Name="Identificación" Type="varchar" MaxLength="500" />
+    <Property Name="Teléfono" Type="varchar" MaxLength="200" />
+    <Property Name="Teléfono2" Type="varchar" MaxLength="200" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="Especialistas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="500" />
+    <Property Name="Identificación" Type="varchar" MaxLength="200" />
+    <Property Name="Teléfono" Type="varchar" MaxLength="200" />
+    <Property Name="Especialidad" Type="varchar" MaxLength="500" />
+    <Property Name="Dirección" Type="varchar" MaxLength="500" />
+    <Property Name="CorreoElectrónico" Type="varchar" MaxLength="200" />
+    <Property Name="IdInstitucionSalud1" Type="int" />
+    <Property Name="idInstitucionSalud2" Type="int" />
+    <Property Name="idInstitucionSalud3" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="EstadoAsociado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="InstitucionesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="500" />
+    <Property Name="IdentificacionNIT" Type="varchar" MaxLength="200" />
+    <Property Name="IdServicioEspecializado" Type="int" />
+    <Property Name="IdServicioEspecializado2" Type="int" />
+    <Property Name="Dirección" Type="varchar" MaxLength="500" />
+    <Property Name="Teléfono" Type="varchar" MaxLength="200" />
+    <Property Name="Teléfono2" Type="varchar" MaxLength="200" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="Procedimientos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="100" />
+    <Property Name="Nombre" Type="varchar" MaxLength="2000" />
+    <Property Name="IdTipoTecnologiaSalud" Type="int" />
+    <Property Name="Descripción" Type="varchar" MaxLength="4000" />
+    <Property Name="IdAutorizacion" Type="int" />
+    <Property Name="ValorAproximado" Type="int" />
+    <Property Name="ValorReal" Type="int" />
+    <Property Name="ValorAsociación" Type="int" />
+  </EntityType>
+  <EntityType Name="RegimenesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ServiciosEspecializadosInstituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Servicio" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoTecnologiaSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Valores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAsociado" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdAutorización" Type="int" />
+    <Property Name="IdDonación" Type="int" />
+    <Property Name="OtrosValores" Type="int" />
+    <Property Name="TotalCobro" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <Association Name="FK_Asociados_EntidadesSalud">
+    <End Role="EntidadesSalud" Type="Self.EntidadesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEntidadSalud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_Especialistas">
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialistas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEspecialista" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_EstadoAsociado">
+    <End Role="EstadoAsociado" Type="Self.EstadoAsociado" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoAsociado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdEstadoAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdInstitucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_RegimenesSalud">
+    <End Role="RegimenesSalud" Type="Self.RegimenesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegimenesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdRegimen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_Asociados">
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_EntidadesSalud">
+    <End Role="EntidadesSalud" Type="Self.EntidadesSalud" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdEntidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdInstitución" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Autorizaciones_Procedimientos">
+    <End Role="Procedimientos" Type="Self.Procedimientos" Multiplicity="0..1" />
+    <End Role="Autorizaciones" Type="Self.Autorizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedimientos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autorizaciones">
+        <PropertyRef Name="IdProcedimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donaciones_Asociados">
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="0..1" />
+    <End Role="Donaciones" Type="Self.Donaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Donaciones">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="IdInstitucionSalud1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud1">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="idInstitucionSalud2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud2">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="idInstitucionSalud3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_InstitucionesSalud">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Procedimientos_TipoTecnologiaSalud">
+    <End Role="TipoTecnologiaSalud" Type="Self.TipoTecnologiaSalud" Multiplicity="0..1" />
+    <End Role="Procedimientos" Type="Self.Procedimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTecnologiaSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Procedimientos">
+        <PropertyRef Name="IdTipoTecnologiaSalud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valores_Asociados">
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="1" />
+    <End Role="Valores" Type="Self.Valores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Valores">
+        <PropertyRef Name="IdAsociado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ASOLHEPAModelStoreContainer">
+    <EntitySet Name="Asociados" EntityType="Self.Asociados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Autorizaciones" EntityType="Self.Autorizaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donaciones" EntityType="Self.Donaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntidadesSalud" EntityType="Self.EntidadesSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Especialistas" EntityType="Self.Especialistas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoAsociado" EntityType="Self.EstadoAsociado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstitucionesSalud" EntityType="Self.InstitucionesSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procedimientos" EntityType="Self.Procedimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegimenesSalud" EntityType="Self.RegimenesSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosEspecializadosInstituciones" EntityType="Self.ServiciosEspecializadosInstituciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoTecnologiaSalud" EntityType="Self.TipoTecnologiaSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Valores" EntityType="Self.Valores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Asociados_EntidadesSalud" Association="Self.FK_Asociados_EntidadesSalud">
+      <End Role="EntidadesSalud" EntitySet="EntidadesSalud" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_Especialistas" Association="Self.FK_Asociados_Especialistas">
+      <End Role="Especialistas" EntitySet="Especialistas" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_EstadoAsociado" Association="Self.FK_Asociados_EstadoAsociado">
+      <End Role="EstadoAsociado" EntitySet="EstadoAsociado" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_InstitucionesSalud" Association="Self.FK_Asociados_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asociados_RegimenesSalud" Association="Self.FK_Asociados_RegimenesSalud">
+      <End Role="RegimenesSalud" EntitySet="RegimenesSalud" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_Asociados" Association="Self.FK_Autorizaciones_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_EntidadesSalud" Association="Self.FK_Autorizaciones_EntidadesSalud">
+      <End Role="EntidadesSalud" EntitySet="EntidadesSalud" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_InstitucionesSalud" Association="Self.FK_Autorizaciones_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Autorizaciones_Procedimientos" Association="Self.FK_Autorizaciones_Procedimientos">
+      <End Role="Procedimientos" EntitySet="Procedimientos" />
+      <End Role="Autorizaciones" EntitySet="Autorizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donaciones_Asociados" Association="Self.FK_Donaciones_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Donaciones" EntitySet="Donaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud" Association="Self.FK_Especialistas_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud1" Association="Self.FK_Especialistas_InstitucionesSalud1">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud2" Association="Self.FK_Especialistas_InstitucionesSalud2">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_InstitucionesSalud" Association="Self.FK_InstitucionesSalud_InstitucionesSalud">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" Association="Self.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Procedimientos_TipoTecnologiaSalud" Association="Self.FK_Procedimientos_TipoTecnologiaSalud">
+      <End Role="TipoTecnologiaSalud" EntitySet="TipoTecnologiaSalud" />
+      <End Role="Procedimientos" EntitySet="Procedimientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valores_Asociados" Association="Self.FK_Valores_Asociados">
+      <End Role="Asociados" EntitySet="Asociados" />
+      <End Role="Valores" EntitySet="Valores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,58 @@
+﻿@model ASOLHEPA_2.EntidadesSalud
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EntidadesSalud</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teléfono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teléfono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teléfono2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teléfono2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

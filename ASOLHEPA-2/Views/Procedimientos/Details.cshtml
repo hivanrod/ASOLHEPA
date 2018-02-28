@@ -1,0 +1,82 @@
+﻿@model ASOLHEPA_2.Procedimiento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Procedimiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripción)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdAutorizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdAutorizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorAproximado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorAproximado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorReal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorAsociación)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorAsociación)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoTecnologiaSalud.Descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoTecnologiaSalud.Descripción)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

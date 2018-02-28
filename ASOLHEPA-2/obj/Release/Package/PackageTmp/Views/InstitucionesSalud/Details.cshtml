@@ -1,0 +1,82 @@
+﻿@model ASOLHEPA_2.InstitucionesSalud
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InstitucionesSalud</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentificacionNIT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdentificacionNIT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirección)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dirección)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teléfono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teléfono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teléfono2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teléfono2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiciosEspecializadosInstitucione.Servicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiciosEspecializadosInstitucione.Servicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiciosEspecializadosInstitucione1.Servicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiciosEspecializadosInstitucione1.Servicio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
