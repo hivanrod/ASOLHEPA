@@ -24,6 +24,7 @@
     <Property Name="FechaInscripción" Type="date" />
     <Property Name="FechaRetiro" Type="date" />
     <Property Name="IdEntidadSalud" Type="int" />
+    <Property Name="IdRegimen" Type="int" />
     <Property Name="IdInstitucion" Type="int" />
     <Property Name="Patología" Type="varchar" MaxLength="200" />
     <Property Name="TipoPatología" Type="varchar" MaxLength="200" />
@@ -41,7 +42,9 @@
     <Property Name="IdAsociado" Type="int" />
     <Property Name="Valor" Type="int" />
     <Property Name="Fecha" Type="date" />
+    <Property Name="FechaPrescripción" Type="date" />
     <Property Name="FechaAutorización" Type="date" />
+    <Property Name="FechaDisfruteDerecho" Type="date" />
     <Property Name="Autoriza" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="Donaciones">
@@ -73,8 +76,13 @@
     <Property Name="Nombres" Type="varchar" MaxLength="500" />
     <Property Name="Identificación" Type="varchar" MaxLength="200" />
     <Property Name="Teléfono" Type="varchar" MaxLength="200" />
-    <Property Name="Teléfono2" Type="varchar" MaxLength="200" />
-    <Property Name="Institución" Type="varchar" MaxLength="4000" />
+    <Property Name="Especialidad" Type="varchar" MaxLength="500" />
+    <Property Name="Dirección" Type="varchar" MaxLength="500" />
+    <Property Name="CorreoElectrónico" Type="varchar" MaxLength="200" />
+    <Property Name="IdInstitucionSalud1" Type="int" />
+    <Property Name="idInstitucionSalud2" Type="int" />
+    <Property Name="idInstitucionSalud3" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="4000" />
   </EntityType>
   <EntityType Name="EstadoAsociado">
     <Key>
@@ -90,6 +98,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="500" />
     <Property Name="IdentificacionNIT" Type="varchar" MaxLength="200" />
+    <Property Name="IdServicioEspecializado" Type="int" />
+    <Property Name="IdServicioEspecializado2" Type="int" />
     <Property Name="Dirección" Type="varchar" MaxLength="500" />
     <Property Name="Teléfono" Type="varchar" MaxLength="200" />
     <Property Name="Teléfono2" Type="varchar" MaxLength="200" />
@@ -101,12 +111,27 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Codigo" Type="varchar" MaxLength="100" />
-    <Property Name="Nombre" Type="varchar" MaxLength="200" />
+    <Property Name="Nombre" Type="varchar" MaxLength="2000" />
+    <Property Name="IdTipoTecnologiaSalud" Type="int" />
     <Property Name="Descripción" Type="varchar" MaxLength="4000" />
     <Property Name="IdAutorizacion" Type="int" />
     <Property Name="ValorAproximado" Type="int" />
     <Property Name="ValorReal" Type="int" />
     <Property Name="ValorAsociación" Type="int" />
+  </EntityType>
+  <EntityType Name="RegimenesSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ServiciosEspecializadosInstituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Servicio" Type="varchar" MaxLength="500" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -121,6 +146,13 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
     <Property Name="diagram_id" Type="int" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoTecnologiaSalud">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="Valores">
     <Key>
@@ -180,6 +212,18 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
       </Principal>
       <Dependent Role="Asociados">
         <PropertyRef Name="IdInstitucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asociados_RegimenesSalud">
+    <End Role="RegimenesSalud" Type="Self.RegimenesSalud" Multiplicity="0..1" />
+    <End Role="Asociados" Type="Self.Asociados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegimenesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asociados">
+        <PropertyRef Name="IdRegimen" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -243,6 +287,78 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="IdInstitucionSalud1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud1">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="idInstitucionSalud2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Especialistas_InstitucionesSalud2">
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="0..1" />
+    <End Role="Especialistas" Type="Self.Especialistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitucionesSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Especialistas">
+        <PropertyRef Name="idInstitucionSalud3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_InstitucionesSalud">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Procedimientos_TipoTecnologiaSalud">
+    <End Role="TipoTecnologiaSalud" Type="Self.TipoTecnologiaSalud" Multiplicity="0..1" />
+    <End Role="Procedimientos" Type="Self.Procedimientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTecnologiaSalud">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Procedimientos">
+        <PropertyRef Name="IdTipoTecnologiaSalud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Valores_Asociados">
     <End Role="Asociados" Type="Self.Asociados" Multiplicity="1" />
     <End Role="Valores" Type="Self.Valores" Multiplicity="*" />
@@ -264,6 +380,9 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
     <EntitySet Name="EstadoAsociado" EntityType="Self.EstadoAsociado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InstitucionesSalud" EntityType="Self.InstitucionesSalud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Procedimientos" EntityType="Self.Procedimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegimenesSalud" EntityType="Self.RegimenesSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosEspecializadosInstituciones" EntityType="Self.ServiciosEspecializadosInstituciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoTecnologiaSalud" EntityType="Self.TipoTecnologiaSalud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Valores" EntityType="Self.Valores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -290,6 +409,10 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
       <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
       <End Role="Asociados" EntitySet="Asociados" />
     </AssociationSet>
+    <AssociationSet Name="FK_Asociados_RegimenesSalud" Association="Self.FK_Asociados_RegimenesSalud">
+      <End Role="RegimenesSalud" EntitySet="RegimenesSalud" />
+      <End Role="Asociados" EntitySet="Asociados" />
+    </AssociationSet>
     <AssociationSet Name="FK_Autorizaciones_Asociados" Association="Self.FK_Autorizaciones_Asociados">
       <End Role="Asociados" EntitySet="Asociados" />
       <End Role="Autorizaciones" EntitySet="Autorizaciones" />
@@ -309,6 +432,30 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
     <AssociationSet Name="FK_Donaciones_Asociados" Association="Self.FK_Donaciones_Asociados">
       <End Role="Asociados" EntitySet="Asociados" />
       <End Role="Donaciones" EntitySet="Donaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud" Association="Self.FK_Especialistas_InstitucionesSalud">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud1" Association="Self.FK_Especialistas_InstitucionesSalud1">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Especialistas_InstitucionesSalud2" Association="Self.FK_Especialistas_InstitucionesSalud2">
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+      <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_InstitucionesSalud" Association="Self.FK_InstitucionesSalud_InstitucionesSalud">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" Association="Self.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Procedimientos_TipoTecnologiaSalud" Association="Self.FK_Procedimientos_TipoTecnologiaSalud">
+      <End Role="TipoTecnologiaSalud" EntitySet="TipoTecnologiaSalud" />
+      <End Role="Procedimientos" EntitySet="Procedimientos" />
     </AssociationSet>
     <AssociationSet Name="FK_Valores_Asociados" Association="Self.FK_Valores_Asociados">
       <End Role="Asociados" EntitySet="Asociados" />

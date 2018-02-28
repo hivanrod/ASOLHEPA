@@ -101,6 +101,8 @@
     <EntitySetMapping Name="InstitucionesSaluds">
       <EntityTypeMapping TypeName="ASOLHEPAModel.InstitucionesSalud">
         <MappingFragment StoreEntitySet="InstitucionesSalud">
+          <ScalarProperty Name="IdServicioEspecializado2" ColumnName="IdServicioEspecializado2" />
+          <ScalarProperty Name="IdServicioEspecializado" ColumnName="IdServicioEspecializado" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="IdentificacionNIT" ColumnName="IdentificacionNIT" />
@@ -163,6 +165,14 @@
       <EntityTypeMapping TypeName="ASOLHEPAModel.TipoTecnologiaSalud">
         <MappingFragment StoreEntitySet="TipoTecnologiaSalud">
           <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiciosEspecializadosInstituciones">
+      <EntityTypeMapping TypeName="ASOLHEPAModel.ServiciosEspecializadosInstitucione">
+        <MappingFragment StoreEntitySet="ServiciosEspecializadosInstituciones">
+          <ScalarProperty Name="Servicio" ColumnName="Servicio" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

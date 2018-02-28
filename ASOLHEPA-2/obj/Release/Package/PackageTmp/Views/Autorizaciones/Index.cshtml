@@ -1,48 +1,48 @@
 ﻿@model IEnumerable<ASOLHEPA_2.Autorizacione>
 
 @{
-    ViewBag.Title = "Autorizaciones";
+    ViewBag.Title = "Listado de Autorizaciones";
 }
 
-<h2>LISTA DE AUTORIZACIONES</h2>
+<h2>Listado de Autorizaciones</h2>
 
 <p>
-    @Html.ActionLink("Crear Nueva", "Create")
+    @Html.ActionLink("Crear Nueva Autorización +", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Valor)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaAutorización)
+            Fecha Autorización
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Autoriza)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Asociado.Nombres)
+            Fecha Prescripción
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EntidadesSalud.Nombres)
+            Fecha Disfrute Derecho
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InstitucionesSalud.Nombre)
+            Asociado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Procedimiento.Codigo)
+            EntidadesSalud
+        </th>
+        <th>
+            InstitucionesSalud
+        </th>
+        <th>
+            Procedimiento Codigo
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valor)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
         </td>
@@ -51,6 +51,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Autoriza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaPrescripción)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaDisfruteDerecho)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Asociado.Nombres)
@@ -65,9 +71,9 @@
             @Html.DisplayFor(modelItem => item.Procedimiento.Codigo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<ASOLHEPA_2.Especialista>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Especialistas";
+}
+
+
+<table class="tb2">
+    <tr>
+        <td>
+            <h2>Listado de Especialistas</h2>
+        </td>
+        <td class="SideL">
+            @Html.ActionLink("Crear Nuevo Especialista +", "Create", "", new { @class = "LNK1" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @TempData["Message"]
+        </td>
+    </tr>
+</table>
+
+
+@using (Html.BeginForm("Index", "Especialistas", FormMethod.Get))
+{
+    var it = Model.TotalItemCount;
+    <p>
+        Buscar por Nombres, Identificación, Observaciones y InstitucionesSalud: @Html.TextBox("SearchString")
+        <input type="submit" value="Buscar" />
+        _   Total registros : @it   _
+
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Identificación
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+            CorreoElectrónico
+        </th>
+        <th>
+            Observaciones
+        </th>
+        <th>
+            Especialidad
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Institucion1
+        </th>
+        <th>
+            Institucion2
+        </th>
+        <th>
+            Institucion3
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificación)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teléfono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectrónico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dirección)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstitucionesSalud.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstitucionesSalud1.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstitucionesSalud2.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edita", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

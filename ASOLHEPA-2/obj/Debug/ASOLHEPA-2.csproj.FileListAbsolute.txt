@@ -15,6 +15,8 @@ C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.ApplicationInsi
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Newtonsoft.Json.dll
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.dll
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.Mvc.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Helpers.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Mvc.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Optimization.dll
@@ -26,6 +28,9 @@ C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\WebGrease.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\EntityFramework.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\EntityFramework.SqlServer.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Newtonsoft.Json.xml
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.xml
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.Mvc.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Helpers.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Mvc.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.Optimization.xml
@@ -34,7 +39,6 @@ C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.WebPages.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.WebPages.Deployment.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\System.Web.WebPages.Razor.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Antlr3.Runtime.pdb
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Newtonsoft.Json.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.ApplicationInsights.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -47,11 +51,7 @@ C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\es\System.Web.Razor.resou
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\es\System.Web.WebPages.resources.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\obj\Debug\ASOLHEPA-2.csprojResolveAssemblyReference.cache
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\obj\Debug\ASOLHEPA-2.csproj.CoreCompileInputs.cache
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\obj\Debug\ASOLHEPA-2.dll
 C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\obj\Debug\ASOLHEPA-2.pdb
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.dll
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.Mvc.dll
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.xml
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\bin\PagedList.Mvc.xml
-C:\Users\hivanr\source\repos\ASOLHEPA-2\ASOLHEPA-2\obj\Debug\ASOLHEPA-2.csprojResolveAssemblyReference.cache

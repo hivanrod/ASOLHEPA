@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ASOLHEPA_2.ServiciosEspecializadosInstitucione>
+
+@{
+    ViewBag.Title = "Listado de Servicios Especializados de Instituciones de Salud";
+}
+
+<h2>Listado de Servicios Especializados de Instituciones de Salud</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Servicio Especializado de Instituciones de Salud", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Servicio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

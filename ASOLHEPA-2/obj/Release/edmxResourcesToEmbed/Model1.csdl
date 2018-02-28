@@ -127,6 +127,10 @@
     <NavigationProperty Name="Especialistas" Relationship="Self.FK_Especialistas_InstitucionesSalud" FromRole="InstitucionesSalud" ToRole="Especialistas" />
     <NavigationProperty Name="Especialistas1" Relationship="Self.FK_Especialistas_InstitucionesSalud1" FromRole="InstitucionesSalud" ToRole="Especialistas" />
     <NavigationProperty Name="Especialistas2" Relationship="Self.FK_Especialistas_InstitucionesSalud2" FromRole="InstitucionesSalud" ToRole="Especialistas" />
+    <Property Name="IdServicioEspecializado" Type="Int32" />
+    <NavigationProperty Name="ServiciosEspecializadosInstitucione" Relationship="ASOLHEPAModel.FK_InstitucionesSalud_InstitucionesSalud" FromRole="InstitucionesSalud" ToRole="ServiciosEspecializadosInstitucione" />
+    <Property Name="IdServicioEspecializado2" Type="Int32" />
+    <NavigationProperty Name="ServiciosEspecializadosInstitucione1" Relationship="ASOLHEPAModel.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" FromRole="InstitucionesSalud" ToRole="ServiciosEspecializadosInstitucione" />
   </EntityType>
   <EntityType Name="Procedimiento">
     <Key>
@@ -134,7 +138,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="Descripción" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
     <Property Name="IdAutorizacion" Type="Int32" />
     <Property Name="ValorAproximado" Type="Int32" />
@@ -419,6 +423,15 @@
       <End Role="TipoTecnologiaSalud" EntitySet="TipoTecnologiaSaluds" />
       <End Role="Procedimiento" EntitySet="Procedimientos" />
     </AssociationSet>
+    <EntitySet Name="ServiciosEspecializadosInstituciones" EntityType="ASOLHEPAModel.ServiciosEspecializadosInstitucione" />
+    <AssociationSet Name="FK_InstitucionesSalud_InstitucionesSalud" Association="ASOLHEPAModel.FK_InstitucionesSalud_InstitucionesSalud">
+      <End Role="ServiciosEspecializadosInstitucione" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSaluds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" Association="ASOLHEPAModel.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+      <End Role="ServiciosEspecializadosInstitucione" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSaluds" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TipoTecnologiaSalud">
     <Key>
@@ -437,6 +450,39 @@
       </Principal>
       <Dependent Role="Procedimiento">
         <PropertyRef Name="IdTipoTecnologiaSalud" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ServiciosEspecializadosInstitucione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Servicio" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="InstitucionesSaluds" Relationship="ASOLHEPAModel.FK_InstitucionesSalud_InstitucionesSalud" FromRole="ServiciosEspecializadosInstitucione" ToRole="InstitucionesSalud" />
+    <NavigationProperty Name="InstitucionesSaluds1" Relationship="ASOLHEPAModel.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" FromRole="ServiciosEspecializadosInstitucione" ToRole="InstitucionesSalud" />
+  </EntityType>
+  <Association Name="FK_InstitucionesSalud_InstitucionesSalud">
+    <End Type="ASOLHEPAModel.ServiciosEspecializadosInstitucione" Role="ServiciosEspecializadosInstitucione" Multiplicity="0..1" />
+    <End Type="ASOLHEPAModel.InstitucionesSalud" Role="InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstitucione">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+    <End Type="ASOLHEPAModel.ServiciosEspecializadosInstitucione" Role="ServiciosEspecializadosInstitucione" Multiplicity="0..1" />
+    <End Type="ASOLHEPAModel.InstitucionesSalud" Role="InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstitucione">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado2" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

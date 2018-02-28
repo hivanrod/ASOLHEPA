@@ -98,6 +98,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="500" />
     <Property Name="IdentificacionNIT" Type="varchar" MaxLength="200" />
+    <Property Name="IdServicioEspecializado" Type="int" />
+    <Property Name="IdServicioEspecializado2" Type="int" />
     <Property Name="Dirección" Type="varchar" MaxLength="500" />
     <Property Name="Teléfono" Type="varchar" MaxLength="200" />
     <Property Name="Teléfono2" Type="varchar" MaxLength="200" />
@@ -109,7 +111,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Codigo" Type="varchar" MaxLength="100" />
-    <Property Name="Nombre" Type="varchar" MaxLength="200" />
+    <Property Name="Nombre" Type="varchar" MaxLength="2000" />
     <Property Name="IdTipoTecnologiaSalud" Type="int" />
     <Property Name="Descripción" Type="varchar" MaxLength="4000" />
     <Property Name="IdAutorizacion" Type="int" />
@@ -123,6 +125,13 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Descripción" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ServiciosEspecializadosInstituciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Servicio" Type="varchar" MaxLength="500" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -314,6 +323,30 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_InstitucionesSalud_InstitucionesSalud">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+    <End Role="ServiciosEspecializadosInstituciones" Type="Self.ServiciosEspecializadosInstituciones" Multiplicity="0..1" />
+    <End Role="InstitucionesSalud" Type="Self.InstitucionesSalud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiciosEspecializadosInstituciones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="InstitucionesSalud">
+        <PropertyRef Name="IdServicioEspecializado2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Procedimientos_TipoTecnologiaSalud">
     <End Role="TipoTecnologiaSalud" Type="Self.TipoTecnologiaSalud" Multiplicity="0..1" />
     <End Role="Procedimientos" Type="Self.Procedimientos" Multiplicity="*" />
@@ -348,6 +381,7 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
     <EntitySet Name="InstitucionesSalud" EntityType="Self.InstitucionesSalud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Procedimientos" EntityType="Self.Procedimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegimenesSalud" EntityType="Self.RegimenesSalud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiciosEspecializadosInstituciones" EntityType="Self.ServiciosEspecializadosInstituciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoTecnologiaSalud" EntityType="Self.TipoTecnologiaSalud" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Valores" EntityType="Self.Valores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
@@ -410,6 +444,14 @@ advertencia 6002: La tabla o vista 'xcursorc_asolhepa.dbo.sysdiagrams' no tiene 
     <AssociationSet Name="FK_Especialistas_InstitucionesSalud2" Association="Self.FK_Especialistas_InstitucionesSalud2">
       <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
       <End Role="Especialistas" EntitySet="Especialistas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_InstitucionesSalud" Association="Self.FK_InstitucionesSalud_InstitucionesSalud">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitucionesSalud_ServiciosEspecializadosInstituciones" Association="Self.FK_InstitucionesSalud_ServiciosEspecializadosInstituciones">
+      <End Role="ServiciosEspecializadosInstituciones" EntitySet="ServiciosEspecializadosInstituciones" />
+      <End Role="InstitucionesSalud" EntitySet="InstitucionesSalud" />
     </AssociationSet>
     <AssociationSet Name="FK_Procedimientos_TipoTecnologiaSalud" Association="Self.FK_Procedimientos_TipoTecnologiaSalud">
       <End Role="TipoTecnologiaSalud" EntitySet="TipoTecnologiaSalud" />
